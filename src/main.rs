@@ -29,7 +29,7 @@ fn main() {
     println!("\n");
 
     let mut s: String = String::new();
-    let input = io::stdin().read_line(&mut s);
+    let _input = io::stdin().read_line(&mut s);
 }
 
 fn brute_force_impl(grid_long: i32, total_words:i32) { 
