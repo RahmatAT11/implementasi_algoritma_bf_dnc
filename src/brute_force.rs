@@ -1,4 +1,4 @@
-pub fn solve_brute_force(grid: &Vec<Vec<char>>, mut words: Vec<&str>) -> Vec<((usize, usize), (usize, usize))> {
+pub fn solve_brute_force(grid: &Vec<Vec<char>>, words: Vec<&str>) -> Vec<((usize, usize), (usize, usize))> {
     let mut moves = Vec::new();
     let directions = vec![
         (0, 1),  // right
