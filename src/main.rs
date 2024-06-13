@@ -1,7 +1,7 @@
 pub mod brute_force;
 pub mod divide_and_conquer;
 pub mod grid_generator;
-use std::time::Instant;
+use std::{io, time::Instant};
 
 use grid_generator::{grid_gen, words_gen};
 
@@ -27,6 +27,9 @@ fn main() {
     println!("Divide and Conquer 20x20 performance");
     test_performance(|| divide_and_conquer_impl(20, 20), AlgorithmType::DivideAndConquer);
     println!("\n");
+
+    let mut s: String = String::new();
+    let input = io::stdin().read_line(&mut s);
 }
 
 fn brute_force_impl(grid_long: i32, total_words:i32) { 
