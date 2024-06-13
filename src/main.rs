@@ -1,62 +1,52 @@
 pub mod brute_force;
 pub mod divide_and_conquer;
+pub mod grid_generator;
 use std::time::Instant;
+
+use grid_generator::{grid_gen, words_gen};
 
 enum AlgorithmType {
     BruteForce,
     DivideAndConquer,
 }
 fn main() {
-    test_performance(brute_force_impl, AlgorithmType::BruteForce);
-    test_performance(divide_and_conquer_impl, AlgorithmType::DivideAndConquer);
+    println!("Brute Force 4x4 performance");
+    test_performance(|| brute_force_impl(4, 4), AlgorithmType::BruteForce);
+    println!("Divide and Conquer 4x4 performance");
+    test_performance(|| divide_and_conquer_impl(4, 4), AlgorithmType::DivideAndConquer);
+    println!("\n");
+
+    println!("Brute Force 10x10 performance");
+    test_performance(|| brute_force_impl(10, 10), AlgorithmType::BruteForce);
+    println!("Divide and Conquer 10x10 performance");
+    test_performance(|| divide_and_conquer_impl(10, 10), AlgorithmType::DivideAndConquer);
+    println!("\n");
+
+    println!("Brute Force 20x20 performance");
+    test_performance(|| brute_force_impl(20, 20), AlgorithmType::BruteForce);
+    println!("Divide and Conquer 20x20 performance");
+    test_performance(|| divide_and_conquer_impl(20, 20), AlgorithmType::DivideAndConquer);
+    println!("\n");
 }
 
-fn brute_force_impl() { 
-    let grid = vec![
-        vec!['c', 'a', 't', 'x', 'y', 'z', 'w', 'o', 'r', 'd'],
-        vec!['d', 'o', 'g', 'b', 'r', 'u', 'i', 'n', 'e', 'p'],
-        vec!['r', 'a', 't', 'g', 'e', 't', 'o', 'n', 'i', 'a'],
-        vec!['m', 'o', 'u', 's', 'e', 'r', 'v', 'i', 'c', 'e'],
-        vec!['p', 'r', 'o', 'g', 'r', 'a', 'm', 'm', 'i', 'n'],
-        vec!['h', 'e', 'l', 'l', 'o', 'a', 'n', 'd', 'c', 'o'],
-        vec!['j', 'a', 'v', 'a', 's', 'c', 'r', 'i', 'p', 't'],
-        vec!['p', 'y', 't', 'h', 'o', 'n', 'a', 'l', 'i', 'c'],
-        vec!['k', 'o', 't', 'l', 'i', 'n', 'b', 'r', 'a', 'v'],
-        vec!['c', 'p', 'l', 'u', 's', 'p', 'l', 'u', 's', 'p'],
-    ];
+fn brute_force_impl(grid_long: i32, total_words:i32) { 
+    let grid = grid_gen(grid_long);
 
-    let words = vec![
-        "cat", "dog", "rat", "mouse", "service", "programming", 
-        "hello", "javascript", "python", "kotlin", "cplusplus"
-    ];
+    let words = words_gen(total_words);
 
-    let moves = brute_force::solve_brute_force(&grid, words);
+    let _moves = brute_force::solve_brute_force(&grid, words);
     
     // for mov in moves {
     //     println!("from {:?} -> to {:?}", mov.0, mov.1);
     // }
 }
 
-fn divide_and_conquer_impl() { 
-    let grid = vec![
-        vec!['c', 'a', 't', 'x', 'y', 'z', 'w', 'o', 'r', 'd'],
-        vec!['d', 'o', 'g', 'b', 'r', 'u', 'i', 'n', 'e', 'p'],
-        vec!['r', 'a', 't', 'g', 'e', 't', 'o', 'n', 'i', 'a'],
-        vec!['m', 'o', 'u', 's', 'e', 'r', 'v', 'i', 'c', 'e'],
-        vec!['p', 'r', 'o', 'g', 'r', 'a', 'm', 'm', 'i', 'n'],
-        vec!['h', 'e', 'l', 'l', 'o', 'a', 'n', 'd', 'c', 'o'],
-        vec!['j', 'a', 'v', 'a', 's', 'c', 'r', 'i', 'p', 't'],
-        vec!['p', 'y', 't', 'h', 'o', 'n', 'a', 'l', 'i', 'c'],
-        vec!['k', 'o', 't', 'l', 'i', 'n', 'b', 'r', 'a', 'v'],
-        vec!['c', 'p', 'l', 'u', 's', 'p', 'l', 'u', 's', 'p'],
-    ];
+fn divide_and_conquer_impl(grid_long: i32, total_words:i32) { 
+    let grid = grid_gen(grid_long);
 
-    let words = vec![
-        "cat", "dog", "rat", "mouse", "service", "programming", 
-        "hello", "javascript", "python", "kotlin", "cplusplus"
-    ];
+    let words = words_gen(total_words);
 
-    let moves = divide_and_conquer::solve_word_search(&grid, &words);
+    let _moves = divide_and_conquer::solve_word_search(&grid, &words);
     
     // for mov in moves {
     //     println!("from {:?} -> to {:?}", mov.0, mov.1);
