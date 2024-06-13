@@ -2,10 +2,10 @@ pub fn grid_gen(grid_long: i32) -> Vec<Vec<char>> {
     match grid_long {
         4 => {
             vec![
-                vec!['C', 'A', 'T', 'F'],
-                vec!['B', 'G', 'E', 'S'],
-                vec!['I', 'T', 'A', 'E'],
-                vec!['S', 'B', 'O', 'T'],
+                vec!['c', 'a', 't', 'f'],
+                vec!['b', 'g', 'e', 's'],
+                vec!['t', 't', 'a', 'e'],
+                vec!['s', 'b', 'o', 't'],
             ]
         },
         10 => {
@@ -54,7 +54,7 @@ pub fn words_gen(total_words: i32) -> Vec<&'static str> {
     match total_words {
         4 => {
             vec![
-                "CAT", "BATS", "TAB", "TAGS"
+                "cat", "bats", "tab", "tags"
             ]
         }
         10 => {
